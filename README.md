@@ -1,12 +1,12 @@
-Calculadora de Bosses
+## Calculadora de Bosses
 
-📋 Descrição
+# 📋 Descrição
 
 A Calculadora de Bosses é uma aplicação desenvolvida em Python com interface gráfica utilizando Tkinter. O objetivo é auxiliar jogadores a calcular a quantidade de bosses que podem ser enfrentados com base na quantidade de pedras de diferentes cores e raridades.
 
 O programa permite salvar e carregar valores automaticamente, facilitando o uso recorrente sem a necessidade de reentrada dos dados.
 
-🚀 Funcionalidades
+# 🚀 Funcionalidades
 
 Entrada de dados para quatro cores de pedras: Amarela, Vermelha, Azul e Verde.
 
@@ -20,11 +20,11 @@ Salvamento automático dos valores inseridos ao fechar o aplicativo.
 
 Carregamento automático dos dados salvos na inicialização.
 
-🖼️ Interface
+# 🖼️ Interface
 
 A interface é simples e intuitiva, com campos de entrada para as pedras, botão de cálculo e uma área para exibir os resultados. Os checkboxes permitem selecionar quais andares deseja visualizar.
 
-⚙️ Como Usar
+# ⚙️ Como Usar
 
 Certifique-se de ter o Python 3 instalado em seu computador.
 
@@ -40,27 +40,26 @@ Execute o programa:
 
 python CalculadoraBossMir4.py
 
-🗂️ Estrutura do Projeto
-
+# 🗂️ Estrutura do Projeto
+```
 calculadora-bosses/
-├── CalculadoraBossMir4.py
-├── valores_pedras.txt (gerado automaticamente)
-└── README.md
-
-📝 Requisitos
+   ├── CalculadoraBossMir4.py
+   ├── valores_pedras.txt (gerado automaticamente)
+   └── README.md
+```
+# 📝 Requisitos
 
 Python 3.x
 
 Tkinter (geralmente já incluído com o Python)
 
-💡 Contribuições
+# 💡 Contribuições
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.
 
-📄 Licença
+# 📄 Licença
 
 Este projeto está licenciado sob a MIT License.
 
-🙋‍♂️ Autor
-
-Desenvolvido por FBruno136.
+# 👤 Autor
+[Bruno](https://github.com/FBruno136).
