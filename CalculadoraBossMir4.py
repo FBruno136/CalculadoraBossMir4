@@ -4,18 +4,25 @@ import os
 
 
 def calcular_bosses(pedras):
-    resultados = {
-        "1f": min(pedras['Amarela']['Incomum'] // 20, pedras['Vermelha']['Incomum'] // 20),
-        "2f": min(pedras['Amarela']['Incomum'] // 25, pedras['Vermelha']['Incomum'] // 25),
-        "3f": min(pedras['Amarela']['Rara'] // 7, pedras['Vermelha']['Rara'] // 7),
-        "4f": min(pedras['Amarela']['Rara'] // 8, pedras['Vermelha']['Rara'] // 8),
-        "5f": min(pedras['Amarela']['Epica'] // 4, pedras['Vermelha']['Epica'] // 4),
-        "6f": min(pedras['Amarela']['Epica'] // 5, pedras['Vermelha']['Epica'] // 5),
-        "7f": min(pedras['Amarela']['Epica'] // 6, pedras['Vermelha']['Epica'] // 5),
-        "8f": min(pedras['Amarela']['Epica'] // 7, pedras['Vermelha']['Epica'] // 5),
-        "9f": min(pedras['Amarela']['Epica'] // 9, pedras['Vermelha']['Epica'] // 9),
-        "10f": min(pedras['Amarela']['Epica'] // 11, pedras['Vermelha']['Epica'] // 11),
+    resultados = {}
+    andares = {
+        "1f": (20, 'Incomum'),
+        "2f": (25, 'Incomum'),
+        "3f": (7, 'Rara'),
+        "4f": (8, 'Rara'),
+        "5f": (4, 'Epica'),
+        "6f": (5, 'Epica'),
+        "7f": (6, 'Epica'),
+        "8f": (7, 'Epica'),
+        "9f": (9, 'Epica'),
+        "10f": (11, 'Epica')
     }
+
+    for andar, (quantidade_por_boss, raridade) in andares.items():
+        grandes = min(pedras['Amarela'][raridade] // quantidade_por_boss, pedras['Vermelha'][raridade] // quantidade_por_boss)
+        medios = min(pedras['Azul'][raridade] // (quantidade_por_boss // 2), pedras['Verde'][raridade] // (quantidade_por_boss // 2))
+        resultados[andar] = {'Grandes': grandes, 'Medios': medios}
+
     return resultados
 
 
@@ -39,10 +46,10 @@ def exibir_resultados(resultados, output_text, check_vars):
     output_text.delete(1.0, tk.END)
     output_text.insert(tk.END, "Resultado:\n")
     output_text.insert(tk.END, "=" * 30 + "\n")
-    
-    for andar, quantidade in resultados.items():
-        if check_vars[andar].get():  # Exibir apenas se o checkbox estiver marcado
-            output_text.insert(tk.END, f"Andar {andar}: {quantidade} Boss(es)\n")
+
+    for andar, dados in resultados.items():
+        if check_vars[andar].get():
+            output_text.insert(tk.END, f"Andar {andar}: {dados['Grandes']} Boss(es) Grandes, {dados['Medios']} Boss(es) Médios\n")
 
     output_text.insert(tk.END, "=" * 30 + "\n")
 
@@ -92,7 +99,7 @@ def main():
         ttk.Label(root, text=cor).grid(row=i+1, column=0, padx=5, pady=5)
         for j, raridade in enumerate(raridades):
             ttk.Label(root, text=raridade).grid(row=0, column=j+1, padx=5, pady=5)
-            entry = tk.Entry(root, width=5, bg=raridade_cores[raridade])  # Alterado para tk.Entry
+            entry = tk.Entry(root, width=5, bg=raridade_cores[raridade])
             entry.grid(row=i+1, column=j+1, padx=5, pady=5)
             entries[f"{cor}_{raridade}"] = entry
 
@@ -113,6 +120,15 @@ def main():
     calcular_btn.grid(row=5, column=0, columnspan=4, pady=10)
 
     carregar_valores(entries)
+
+    # Selo de Copyright com link
+    def abrir_github(event):
+        import webbrowser
+        webbrowser.open_new("https://github.com/FBruno136")
+
+    selo_copyright = tk.Label(root, text="© 2025 Bruno - Todos os direitos reservados", font=("Arial", 8), fg="blue", cursor="hand2")
+    selo_copyright.grid(row=11, column=0, columnspan=4, pady=(10, 5))
+    selo_copyright.bind("<Button-1>", abrir_github)
 
     root.mainloop()
 
