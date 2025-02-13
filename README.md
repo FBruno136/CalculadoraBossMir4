@@ -26,6 +26,8 @@ A interface é simples e intuitiva, com campos de entrada para as pedras, botão
 
 # ⚙️ Como Usar
 
+Baixe o arquivo CalculadoraBoss.exe que ja deixei acima ou baixe o arquivo .py e ajude a melhorar o prejeto, caso queira baixar o arquivo python:
+
 Certifique-se de ter o Python 3 instalado em seu computador.
 
 Clone o repositório:
